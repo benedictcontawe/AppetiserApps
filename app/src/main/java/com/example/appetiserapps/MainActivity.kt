@@ -4,12 +4,15 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
+import android.view.inputmethod.EditorInfo
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-public class MainActivity : AppCompatActivity() {
+public class MainActivity : AppCompatActivity(), TextView.OnEditorActionListener {
 
     companion object {
         private val TAG : String = MainActivity::class.java.getSimpleName()
@@ -27,10 +30,8 @@ public class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState : Bundle?) { Log.d(TAG,"onCreate()")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        search.setOnEditorActionListener(this)
         setRecyclerView()
-        if (savedInstanceState == null) { //Log.d(TAG,"getList() ${mainViewModel.checkList("start")}")
-            mainViewModel.updateList("start")
-        }
         observeList()
     }
 
@@ -48,5 +49,13 @@ public class MainActivity : AppCompatActivity() {
                 iTunesAdapter.setItems(updatedList)
             }
         })
+    }
+
+    override fun onEditorAction(textView : TextView?, actionId : Int, event : KeyEvent?) : Boolean {
+        return if (textView == search && actionId == EditorInfo.IME_ACTION_SEARCH) {
+            Log.d(TAG,"onEditorAction search ${textView?.getText()}")
+            mainViewModel.updateList(textView?.getText().toString())
+            true
+        } else false
     }
 }

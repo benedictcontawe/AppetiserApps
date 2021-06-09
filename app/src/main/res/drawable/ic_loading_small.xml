@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:top="@dimen/dp_100"
+        android:start="@dimen/dp_100"
+        android:end="@dimen/dp_100"
+        android:bottom="@dimen/dp_100"
+        android:drawable="@drawable/ic_loading" />
+
+</layer-list>

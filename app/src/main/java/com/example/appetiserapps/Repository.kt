@@ -41,6 +41,7 @@ class Repository : BaseRepository {
     }
 
     override suspend fun search(query : String, country : String, media : String, limit : Int) : ITunesResponseModel { Log.d(TAG,"search($query)")
+        query.replace(" ","+")
         val response : Response<ITunesResponseModel> = iTunesAPI.getMedia(query, country, media, limit).execute()
         Log.d(TAG,"isSuccessful() ${response.isSuccessful()}")
         Log.d(TAG,"errorBody() ${response.errorBody()}")

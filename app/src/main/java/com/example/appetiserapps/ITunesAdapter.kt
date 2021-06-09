@@ -20,8 +20,7 @@ public class ITunesAdapter : RecyclerView.Adapter<BaseViewHolder> {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) : BaseViewHolder {
         val layoutInflater : LayoutInflater = LayoutInflater.from(parent.getContext())
-        val view : View
-        view = layoutInflater.inflate(R.layout.media_cell, parent, false)
+        val view : View = layoutInflater.inflate(R.layout.media_cell, parent, false)
         return ITunesViewHolder(parent.context, view)
     }
 

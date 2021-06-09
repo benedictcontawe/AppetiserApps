@@ -43,6 +43,9 @@
         android:id="@+id/search"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:hint="Search Here"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
         app:layout_constraintTop_toTopOf="@id/constraint_guideline_horizontal_top"
         app:layout_constraintStart_toStartOf="@id/constraint_guideline_vertical_leading"
         app:layout_constraintEnd_toEndOf="@id/constraint_guideline_vertical_trailing" />

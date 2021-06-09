@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.Priority
 
 abstract class BaseViewHolder : RecyclerView.ViewHolder {
 
@@ -34,8 +35,10 @@ abstract class BaseViewHolder : RecyclerView.ViewHolder {
         if (image?.isNotBlank() == true) {
             Glide.with(getContext())
                 .asBitmap()
-                .placeholder(R.mipmap.ic_launcher)
+                .error(R.drawable.ic_error_black)
+                .placeholder(R.drawable.animation_loading)
                 .load(image)
+                .priority(Priority.HIGH)
                 .into(imageView)
         }
     }
